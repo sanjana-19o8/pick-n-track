@@ -1,0 +1,31 @@
+.order-picking-form {
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .summary {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .summary p {
+    font-size: 18px;
+  }
+  

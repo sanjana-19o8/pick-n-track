@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "postgres.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/postgres.js"
+    }
+  ],
+  "env": {
+    "POSTGRES_URL": "postgres://default:4ZC6vKbqifoN@ep-solitary-shape-a4rrnq47-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require",
+    "PORT": "4000"
+  }
+}

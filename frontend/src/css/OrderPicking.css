@@ -1,0 +1,65 @@
+.order-picking-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Heading style */
+.order-picking-container h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* Form styling */
+.order-picking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-picking-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.order-picking-form textarea,
+.order-picking-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.order-picking-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.order-picking-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Result section styling */
+.result-section {
+  margin-top: 20px;
+}
+
+.result-section h3 {
+  text-align: center;
+  color: #333;
+}
+
+.result-section pre {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
