@@ -1,73 +1,55 @@
-import React, { useState } from 'react';
-import '../../css/OrderPick.css'; 
+import React from 'react';
+import { Box, Button, Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import '../../css/OrderPick.css';
 
-
-const OrderPickingForm = ({items, handleItemsChange}) => {
-  // State to manage the count of items, item selections, and travel time for each category
-  const [categories, setCategories] = useState([
+const OrderPickingForm = ({ items, handleItemsChange }) => {
+  const [categories, setCategories] = React.useState([
     { id: 0, name: 'Groceries', count: 0, item1: 'Groceries', item2: 'Furniture', travelTime: '10 mins' },
     { id: 1, name: 'Furniture', count: 0, item1: 'Groceries', item2: 'Apparel', travelTime: '15 mins' },
     { id: 2, name: 'Apparel', count: 0, item1: 'Groceries', item2: 'Electronics', travelTime: '20 mins' },
     { id: 3, name: 'Electronics', count: 0, item1: 'Furniture', item2: 'Apparel', travelTime: '25 mins' },
   ]);
 
-  // Function to handle incrementing the count
   const increment = (index) => {
     const newCategories = [...categories];
     newCategories[index].count += 1;
     setCategories(newCategories);
+    handleItemsChange(JSON.stringify(newCategories.filter(cat => cat.count > 0).map(cat => cat.id)));
   };
 
-  // Function to handle decrementing the count
   const decrement = (index) => {
     const newCategories = [...categories];
     if (newCategories[index].count > 0) {
       newCategories[index].count -= 1;
       setCategories(newCategories);
+      handleItemsChange(JSON.stringify(newCategories.filter(cat => cat.count > 0).map(cat => cat.id)));
     }
-  };
-
-  // Function to display the selected categories and counts
-  const displaySelectedCategories = () => {
-    let newitems = categories.filter(cat => cat.count > 0).map(cat => cat.id)
-    let item_names = categories.filter(cat => cat.count > 0).map(cat => cat.name).join(', ')
-    handleItemsChange(JSON.stringify(newitems))
-    return item_names
   };
 
   return (
     <div className="order-picking-form">
-      <table>
-        <thead>
-          <tr>
-            <th>Item Categories</th>
-            <th>Quantity</th>
-            <th>Item 1</th>
-            <th>Item 2</th>
-            <th>Time to Travel</th>
-          </tr>
-        </thead>
-        <tbody>
-          {categories.map((category, index) => (
-            <tr key={index}>
-              <td>{category.name}</td>
-              <td>
-                <button onClick={() => decrement(index)}>-</button>
-                <span>{category.count}</span>
-                <button onClick={() => increment(index)}>+</button>
-              </td>
-              <td>{category.item1}</td>
-              <td>{category.item2}</td>
-              <td>{category.travelTime}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <div className="summary">
-        <h4>Total Categories of Items Ordered:</h4>
-        <p>[{displaySelectedCategories()}]</p>
-      </div>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Item Categories</TableCell>
+              <TableCell>Quantity</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {categories.map((category, index) => (
+              <TableRow key={category.id}>
+                <TableCell>{category.name}</TableCell>
+                <TableCell>
+                  <Button variant="contained" size="small" onClick={() => decrement(index)}>-</Button>
+                  <Box component="span" sx={{ mx: 2 }}>{category.count}</Box>
+                  <Button variant="contained" size="small" onClick={() => increment(index)}>+</Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
   );
 };

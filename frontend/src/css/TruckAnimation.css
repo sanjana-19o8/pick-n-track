@@ -3,10 +3,10 @@
 .map-container {
   position: relative;
   width: 500px;
-  height: 500px;
+  height: 450px;
   background-color: #f0f0f0;
-  border: 2px solid #000;
-  margin: 0 auto;
+  border: 2px solid #00000031;
+  margin: 10px auto;
   overflow: hidden;
 }
 
@@ -17,6 +17,7 @@
   top: 10px; 
   left: 30px; 
   animation: moveTruck 9s linear infinite;
+  z-index: 100;
 }
 
 
@@ -43,55 +44,78 @@
 
 
 .start-node {
-  top: 5px;
+  top: 25px;
   left: 25px;
 }
 
 .stop-1-node {
-  top: 5px;
+  top: 25px;
   left: 365px;
 }
 
 .stop-2-node {
-  top: 95px;
+  top: 115px;
   left: 215px;
 }
 
 .stop-3-node {
-  top: 195px;
+  top: 215px;
   left: 365px;
 }
 
 .end-node {
-  top: 295px;
+  top: 315px;
   left: 25px;
+}
+
+.node {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 10px;
+}
+
+.node-img {
+  width: 50px;
+  height: auto;
+}
+
+.label {
+  margin-top: 5px;
+  font-weight: bold;
 }
 
 
 @keyframes moveTruck {
   0% {
-    top: 10px;
+    top: 50px;
+    left: 50px;
+  }
+  20% {
+    top: 50px;
+    left: 400px;
+  }
+  40% {
+    top: 140px;
+    left: 230px;
+  }
+  60% {
+    top: 240px;
+    left: 390px;
+  }
+  80% {
+    top: 340px;
     left: 30px;
-    transform: rotate(0deg);
-  }
-  25% {
-    top: 10px;
-    left: 370px;
-    transform: rotate(30deg); 
-  }
-  50% {
-    top: 100px;
-    left: 220px;
-    transform: rotate(35deg); 
-  }
-  75% {
-    top: 200px;
-    left: 370px;
-    transform: rotate(-30deg); 
   }
   100% {
-    top: 300px;
-    left: 30px;
-    transform: rotate(30deg); 
+    top: 50px;
+    left: 50px;
   }
 }

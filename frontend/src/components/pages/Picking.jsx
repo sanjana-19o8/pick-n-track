@@ -57,12 +57,6 @@ const Picking = () => {
                 The method used for the vehicles to pick up the assigned items for given constraints is:<br />
                 <b>Zone Batch Picking: Splits the warehouse into different zones and picks items zone by zone.</b><br />
               </Typography>
-              <Title
-                variant="h4"
-                sx={{ fontSize: "20px", align: "centre"}}
-              >
-                Route & Arrival Time for each Vehicle
-              </Title>
             </Box>
 
             <Box sx={{ flex: "1.25" }}>
@@ -73,25 +67,28 @@ const Picking = () => {
               />
             </Box>
           </CustomBox>
-      {/* <Typography variant="h6" color="primary" align="center" gutterBottom>
+          {/* <Typography variant="h6" color="primary" align="center" gutterBottom>
         The core method that uses linear programming to determine the optimal routes for the vehicles to minimize the total picking time. It calculates the time required for each vehicle to pick up the assigned items is: Zone Batch Picking
       </Typography>
       <Typography variant="h6" color="primary" align="center" gutterBottom>
         zone_batch_picking: Splits the warehouse into different zones and picks items zone by zone.
       </Typography> */}
-      <Paper elevation={3} style={{ margin: '50px', padding: '30px', backgroundColor: '#f5f5f5' }}>
-        <Typography variant="h6" align="center">
-          RESULTS
-        </Typography>
-        <Typography variant="body1" align="center">
-          Route taken by  Vehicle: start- grocery- furniture- apparel- electronic <br />
-          Total Optimised time for order picking process: 65 min
+          <Paper elevation={3} style={{ margin: '50px', padding: '30px', backgroundColor: '#f5f5f5' }}>
+            <Title
+              align='center'
+              variant="h4"
+              sx={{ fontSize: "20px", align: "center" }}
+            >
+              Route & Arrival Time for each Vehicle
+            </Title>
+            <Typography variant="body1" align="center">
+              Route taken by Vehicle 0: start -&gt; grocery -&gt; furniture -&gt; apparel -&gt; electronic <br />
+              Total Optimised time for order picking process: 65 min
+            </Typography>
+          </Paper>
+          <TruckAnimation />
 
-        </Typography>
-      </Paper>
-      <TruckAnimation />
-
-      {/* <Paper elevation={3} style={{ margin: '50px', padding: '30px', backgroundColor: '#f5f5f5' }}>
+          {/* <Paper elevation={3} style={{ margin: '50px', padding: '30px', backgroundColor: '#f5f5f5' }}>
         <Typography variant="h6" align="center">
           RESULTS
         </Typography>
