@@ -9,7 +9,7 @@ This project revolutionizes supply chain management by merging blockchain techno
   - [Enhanced Transparency](#transparency-and-traceability)
   - [Optimized Order-Picking](#efficient-order-picking-processes)
   - [Improved Inventory Management](#improved-inventory-management)
-  - [Simplified Multi-Intermediary Handling](#simplified-multi-intermediary-handling:)
+  - [Simplified Multi-Intermediary Handling](#simplified-multi-intermediary-supply-chains)
   - [Informed Consumer Decisions](#consumer-access-to-product-information)
 
 - [Usage](#usage)
