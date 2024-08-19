@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import '../../css/OrderPick.css'; 
 
 
-const OrderPickingForm = () => {
+const OrderPickingForm = ({items, handleItemsChange}) => {
   // State to manage the count of items, item selections, and travel time for each category
   const [categories, setCategories] = useState([
-    { name: 'Groceries', count: 0, item1: 'Groceries', item2: 'Furniture', travelTime: '10 mins' },
-    { name: 'Furniture', count: 0, item1: 'Groceries', item2: 'Apparel', travelTime: '15 mins' },
-    { name: 'Apparel', count: 0, item1: 'Groceries', item2: 'Electronics', travelTime: '20 mins' },
-    { name: 'Electronics', count: 0, item1: 'Furniture', item2: 'Apparel', travelTime: '25 mins' },
+    { id: 0, name: 'Groceries', count: 0, item1: 'Groceries', item2: 'Furniture', travelTime: '10 mins' },
+    { id: 1, name: 'Furniture', count: 0, item1: 'Groceries', item2: 'Apparel', travelTime: '15 mins' },
+    { id: 2, name: 'Apparel', count: 0, item1: 'Groceries', item2: 'Electronics', travelTime: '20 mins' },
+    { id: 3, name: 'Electronics', count: 0, item1: 'Furniture', item2: 'Apparel', travelTime: '25 mins' },
   ]);
 
   // Function to handle incrementing the count
@@ -29,7 +29,10 @@ const OrderPickingForm = () => {
 
   // Function to display the selected categories and counts
   const displaySelectedCategories = () => {
-    return categories.filter(cat => cat.count > 0).map(cat => cat.name).join(', ');
+    let newitems = categories.filter(cat => cat.count > 0).map(cat => cat.id)
+    let item_names = categories.filter(cat => cat.count > 0).map(cat => cat.name).join(', ')
+    handleItemsChange(JSON.stringify(newitems))
+    return item_names
   };
 
   return (

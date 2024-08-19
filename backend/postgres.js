@@ -1,3 +1,6 @@
+const dotenv = require('dotenv')
+dotenv.configDotenv()
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -5,19 +8,20 @@ const { Client } = require('pg');
 const path = require('path');
 const multer = require('multer');
 const { spawn } = require('child_process');
+const { env } = require('process');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const port = 5000;
+const port = process.env.PORT;
 
 const client = new Client({
     host: "localhost",
     user: "postgres",
     port: 5432,
     password: "postgres",
-    database: "identeefi"
+    database: process.env.database
 });
 
 client.connect();
@@ -193,10 +197,6 @@ app.post('/picking', (req, res) => {
         result += data.toString();
     });
 
-    python.stderr.on('data', (data) => {
-        console.error(stderr, data);
-    });
-
     python.on('close', (code) => {
         if (code !== 0) {
             res.status(500).send('Error executing Python script');
@@ -205,7 +205,7 @@ app.post('/picking', (req, res) => {
         try {
             res.json(JSON.parse(result));
         } catch (error) {
-            console.error('JSON Parsing Error: ${error}');
+            console.error(`JSON Parsing Error: ${error.message}`);
             res.status(500).send('Error parsing Python script output');
         }
     });

@@ -31,15 +31,15 @@ const StyledButton = styled(Button)({
 });
 
 const OrderPicking = () => {
-  const [items, setItems] = useState('');
-  const [timeMatrix, setTimeMatrix] = useState('');
+  const [items, setItems] = useState([]);
+  // const [timeMatrix, setTimeMatrix] = useState('');
   const [vehicles, setVehicles] = useState('');
   const [limit, setLimit] = useState('');
   const [result, setResult] = useState(null);
-  const navigate = useNavigate();  // Initialize the navigate function
+  const navigate = useNavigate();
 
-  const handleItemsChange = (e) => setItems(e.target.value);
-  const handleTimeMatrixChange = (e) => setTimeMatrix(e.target.value);
+  const handleItemsChange = (newItems) => setItems(newItems);
+  // const handleTimeMatrixChange = (e) => setTimeMatrix(e.target.value);
   const handleVehiclesChange = (e) => setVehicles(e.target.value);
   const handleLimitChange = (e) => setLimit(e.target.value);
 
@@ -68,7 +68,7 @@ const OrderPicking = () => {
         <Typography variant="h4" color="textPrimary" gutterBottom>
           Order Picking
         </Typography>
-        <OrderPickingForm />
+        <OrderPickingForm items={items} handleItemsChange={handleItemsChange}/>
         {/* <TextField
           label="Items (JSON Array)"
           multiline
